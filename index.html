@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Synthesizer</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <main>
+            <header><h2 id="title">Synthesizer, by JP</h2></header>
+            <div class="container">
+                <h4 id="waveform-header">Waveform</h4>
+                <div class="waveform-container">
+                    <button id="sine" class="pushable"><span
+                            class="front">Sine</span></button>
+                    <button id="saw" class="pushable"><span
+                            class="front">Saw</span></button>
+                    <button id="square" class="pushable"><span
+                            class="front">Square</span></button>
+                </div>
+                <h4 id="frequency-header">Frequency</h4>
+                <input id="frequency" type="number" value="440"><p>(Hz)</p>
+                
+            </div>
+        </main>
+        <script src="./script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,124 @@
+:root {
+    --deep-space-blue: #1A1A72;
+    --glowing-amber: #FFBF00;
+    --laser-green: #53ff34;
+    --dusty-grey: #2a2a2a;
+    --ultraviolet: #8A2BE2;
+    --electric-pink: #ff0080;
+    --darker-pink: #bd005e;
+    --vivid-cyan: #00E5FF;
+    --dull-beige: #C2B280;
+    --white: #fff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--dusty-grey);
+    font-family: monospace;
+}
+
+#title {
+    font-size: xx-large;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+.container {
+    height: 400px;
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 5px solid var(--ultraviolet);
+    border-radius: 10px;
+    background-color: var(--deep-space-blue);
+    padding: 10px;
+}
+
+@media (max-width: 992px) {
+    .container {
+        max-width: 600px;
+        /* Maximum width for medium screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 100%;
+        /* Full width for small screens like phones */
+    }
+}
+
+#waveform-header,
+#frequency-header {
+    font-size: x-large;
+    color: var(--glowing-amber);
+}
+
+.waveform-container {
+    margin: 15px 0 30px 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+button {
+    font-family: inherit;
+    height: 45px;
+    width: 100px;
+    cursor: pointer;
+    outline: none;
+}
+
+.pushable {
+    background: var(--darker-pink);
+    border-radius: 12px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 6px;
+}
+
+.front {
+    display: block;
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    background: var(--electric-pink);
+    color: white;
+    transform: translateY(-6px);
+}
+
+.pushable:active .front {
+    transform: translateY(-2px);
+}
+
+#frequency-header {
+    margin: 0 0 15px 0;
+}
+
+p {
+    font-size: large;
+    color: var(--glowing-amber);
+    font-weight: bold;
+}
+
+input {
+    height: 40px;
+    width: 100px;
+    font-size: x-large;
+    text-align: center;
+    border-radius: 6px;
+    margin: 0 0 5px 0;
+    background-color: var(--dull-beige);
+    font-weight: bolder;
+    font-family: inherit;
+}
