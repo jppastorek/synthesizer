@@ -31,7 +31,7 @@ body {
 }
 
 .container {
-    height: 400px;
+    height: 550px;
     max-width: 1000px;
     margin: 0 auto;
     border: 5px solid var(--ultraviolet);
@@ -81,7 +81,8 @@ button {
     transform: translateY(-4px);
 }
 
-button:active, .active {
+button:active,
+.active {
     transform: translateY(2px);
 }
 
@@ -93,7 +94,8 @@ button:active, .active {
     box-shadow: 0 12px var(--darker-pink);
 }
 
-.waveform-button:active, .waveform-button.active {
+.waveform-button:active,
+.waveform-button.active {
     box-shadow: 0 6px var(--darker-pink);
 }
 
@@ -105,7 +107,7 @@ p {
     font-size: large;
     color: var(--glowing-amber);
     font-weight: bold;
-    margin: 0 0 50px 0;
+    margin: 0 0 30px 0;
 }
 
 input {
@@ -127,6 +129,15 @@ input:focus {
     border: none;
 }
 
+canvas {
+    height: 100px;
+    width: 200px;
+    margin: 0 0 30px 0;
+    border: 2px solid var(--electric-pink);
+    border-radius: 12px;
+    background-color: var(--dusty-grey);
+}
+
 .controls-container {
     display: flex;
     flex-direction: row;
@@ -142,7 +153,8 @@ input:focus {
     box-shadow: 0 12px rgb(17, 145, 0);
 }
 
-#play-button:active, #play-button.active {
+#play-button:active,
+#play-button.active {
     box-shadow: 0 6px rgb(17, 145, 0);
 }
 
@@ -156,4 +168,25 @@ input:focus {
 
 #stop-button:active {
     box-shadow: 0 6px rgb(185, 0, 0);
+}
+
+.gain-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 0 0;
+}
+
+#gain-label {
+    color: var(--glowing-amber);
+    font-family: inherit;
+    font-size: medium;
+    font-weight: bold;
+}
+
+#gain-input {
+    width: 200px;
+    margin: 0;
 }

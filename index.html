@@ -12,16 +12,22 @@
       <div class="container">
         <h4 id="waveform-header">Waveform</h4>
         <div class="waveform-container">
-          <button id="sine-button" class="waveform-button">Sine</button>
+          <button id="sine-button" class="waveform-button active">Sine</button>
           <button id="saw-button" class="waveform-button">Saw</button>
           <button id="square-button" class="waveform-button">Square</button>
+          <button id="triangle-button" class="waveform-button">Triangle</button>
         </div>
         <h4 id="frequency-header">Frequency</h4>
         <input id="frequency-input" type="number" value="440" />
         <p>(Hz)</p>
+        <canvas id="visualizer"></canvas>
         <div class="controls-container">
           <button id="play-button" class="controls-button">Play</button>
           <button id="stop-button" class="controls-button">Stop</button>
+        </div>
+        <div class="gain-container">
+          <label id="gain-label" for="gain">Volume</label>
+          <input id="gain-input" type="range" min="0" max="2" step="0.01" value="1" />
         </div>
       </div>
     </main>

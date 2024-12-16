@@ -1,14 +1,18 @@
 const sine_button = document.getElementById("sine-button");
 const saw_button = document.getElementById("saw-button");
 const square_button = document.getElementById("square-button");
+const triangle_button = document.getElementById("triangle-button");
 const play_button = document.getElementById("play-button");
 const stop_button = document.getElementById("stop-button");
 const frequency_input = document.getElementById("frequency-input");
-const waveform_buttons = [sine_button, saw_button, square_button];
-let waveform;
-
-let started = false;
-console.log(started);
+const gain_input = document.getElementById("gain-input");
+const visualizer = document.getElementById("visualizer");
+const waveform_buttons = [sine_button, saw_button, square_button, triangle_button];
+let waveform = "sine";
+let context;
+let oscillator;
+let gainNode;
+let analyser;
 
 const deactivate_buttons = () => {
   waveform_buttons.forEach((button) => {
@@ -34,22 +38,41 @@ square_button.addEventListener("click", () => {
   square_button.classList.add("active");
 });
 
-frequency_input.addEventListener("change", () => {
+triangle_button.addEventListener("click", () => {
+  waveform = "triangle";
+  deactivate_buttons();
+  triangle_button.classList.add("active");
+});
+
+frequency_input.addEventListener("input", () => {
   oscillator.frequency.value = frequency_input.value;
 });
 
 play_button.addEventListener("click", () => {
-  if (started == false) {
-    const context = new AudioContext();
-    const oscillator = context.createOscillator();
-    oscillator.start();
-  } else {
-    if (context.state === "suspended") context.state = "resume";
-    oscillator.type = waveform;
-    oscillator.connect(context.destination);
-    play_button.classList.add("active");
+  if (context === undefined) {
+    context = new AudioContext();
   }
-  started = true;
+  if (oscillator === undefined) {
+    oscillator = context.createOscillator();
+    oscillator.start();
+  }
+  if (context.state === "suspended") {
+    context.state = "running";
+  }
+  if (gainNode === undefined) {
+    gainNode = context.createGain();
+  }
+  if (analyser === undefined) {
+    analyser = context.createAnalyser();
+    analyser.fftSize = 256;
+    drawVisualizer();
+  }
+  oscillator.type = waveform;
+  gainNode.gain.value = gain_input.value;
+  oscillator.connect(gainNode);
+  gainNode.connect(analyser);
+  analyser.connect(context.destination);
+  play_button.classList.add("active");
 });
 
 stop_button.addEventListener("click", () => {
@@ -57,3 +80,33 @@ stop_button.addEventListener("click", () => {
   if (play_button.classList.contains("active"))
     play_button.classList.remove("active");
 });
+
+
+gain_input.addEventListener("input", () => {
+  gainNode.gain.value = gain_input.value;
+});
+
+const drawVisualizer = ()=> {
+  requestAnimationFrame(drawVisualizer);
+
+  const bufferLength = analyser.frequencyBinCount;
+  const dataArray = new Uint8Array(bufferLength);
+  analyser.getByteFrequencyData(dataArray);
+  const width = visualizer.width;
+  const height = visualizer.height;
+  const barWidth = 10;
+  const canvasContext = visualizer.getContext('2d');
+  canvasContext.clearRect(0, 0, width, height);
+  let x = 0;
+  dataArray.forEach((item, index,array) => {
+   const y = item / 255 * height*1.1;
+   canvasContext.strokeStyle = `blue`;
+   x = x + barWidth;
+   canvasContext.beginPath();
+   canvasContext.lineCap = "round";
+   canvasContext.lineWidth = 2;
+   canvasContext.moveTo(x, height);
+   canvasContext.lineTo(x, height - y);
+   canvasContext.stroke();
+  })
+};
