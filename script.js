@@ -24,24 +24,36 @@ sine_button.addEventListener("click", () => {
   waveform = "sine";
   deactivate_buttons();
   sine_button.classList.add("active");
+  if (oscillator != undefined) {
+    oscillator.type = "sine";
+  }
 });
 
 saw_button.addEventListener("click", () => {
   waveform = "sawtooth";
   deactivate_buttons();
   saw_button.classList.add("active");
+  if (oscillator != undefined) {
+    oscillator.type = "sawtooth";
+  }
 });
 
 square_button.addEventListener("click", () => {
   waveform = "square";
   deactivate_buttons();
   square_button.classList.add("active");
+  if (oscillator != undefined) {
+    oscillator.type = "square";
+  }
 });
 
 triangle_button.addEventListener("click", () => {
   waveform = "triangle";
   deactivate_buttons();
   triangle_button.classList.add("active");
+  if (oscillator != undefined) {
+    oscillator.type = "triangle";
+  }
 });
 
 frequency_input.addEventListener("input", () => {
