@@ -17,17 +17,42 @@
           <button id="square-button" class="waveform-button">Square</button>
           <button id="triangle-button" class="waveform-button">Triangle</button>
         </div>
-        <h4 id="frequency-header">Frequency</h4>
-        <input id="frequency-input" type="number" value="440" />
-        <p>(Hz)</p>
+        <div class="editing-container">
+          <div class="frequency-container">
+            <h4 id="frequency-header">Frequency</h4>
+            <input id="frequency-input" type="number" value="440" />
+            <p>(Hz)</p>
+          </div>
+          <div class="envelope-container">
+            <label for="attack">Attack</label>
+            <input
+              name="attack"
+              id="attack"
+              type="range"
+              min="0"
+              max="1"
+              value="0.2"
+              step="0.1" />
+            <label for="release">Release</label>
+            <input
+              name="release"
+              id="release"
+              type="range"
+              min="0"
+              max="1"
+              value="0.5"
+              step="0.1" />
+          </div>
+        </div>
         <canvas id="visualizer"></canvas>
         <div class="controls-container">
           <button id="play-button" class="controls-button">Play</button>
           <button id="stop-button" class="controls-button">Stop</button>
         </div>
         <div class="gain-container">
-          <label id="gain-label" for="gain">Volume</label>
-          <input id="gain-input" type="range" min="0" max="2" step="0.01" value="1" />
+          <label id="gain-label" for="gain">Gain</label>
+          <input id="gain-input" type="range" min="0" max="2" step="0.01"
+            value="1" />
         </div>
       </div>
     </main>

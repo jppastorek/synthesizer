@@ -99,6 +99,15 @@ button:active,
     box-shadow: 0 6px var(--darker-pink);
 }
 
+.editing-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
 #frequency-header {
     margin: 0 0 15px 0;
 }
@@ -127,6 +136,14 @@ input {
 input:focus {
     outline: none;
     border: none;
+}
+
+.envelope-container {
+    display: flex;
+    flex-direction: column;
+    color: var(--glowing-amber);
+    font-family: inherit;
+    font-weight: bold;
 }
 
 canvas {
